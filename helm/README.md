@@ -70,3 +70,25 @@ Handling connection for 8080
     Handling connection for 8080
     Handling connection for 8080
     ```
+
+## Security
+The security setting below have been applied additionally to follow the best practices:
+```
+    - Pod Security Context:
+        fsGroup: 1000 - Sets ownership of volume files to group 1000;
+        runAsNonRoot: true - Prevents containers from running as root user;
+        runAsUser/runAsGroup: 1000 -  Runs processes with specific non-root identity;
+        seccompProfile: RuntimeDefault - Restricts available system calls (reboot, shutdown, etc...);
+    - Container Security Context:
+        allowPrivilegeEscalation: false - Prevents privilege escalation;
+        capabilities.drop: [ALL] - Removes all Linux capabilities;
+        privileged: false - Prevents privileged container execution;
+        readOnlyRootFilesystem - Commented out due to application requirements;
+    - Network Security:
+        Network Policy - Controls pod-to-pod communication;
+        Ingress rules - Control inbound traffic to pods;
+        Egress rules - Restrict outbound traffic (DNS and essential services only);
+    - Resource Controls:
+        Resource Limits - Restrict individual container resource usage;
+        Resource Quota: Prevents namespace resource break the limit;
+```
