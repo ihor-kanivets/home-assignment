@@ -10,10 +10,7 @@ This repository contains Kubernetes manifests to deploy the `kennethreitz/httpbi
     6. Create a HorizontalPodAutoscaler: `kubectl apply -f hpa.yaml'.
 
     To remove all the `httpbin` related resources, run the commands below:
-    1. Delete the HorizontalPodAutoscaler: `kubectl delete -f hpa.yaml`;
-    2. Delete the service: `kubectl delete -f service.yaml`;
-    3. Delete the deployment: `kubectl delete -f deployment.yaml`;
-    4. Delete the namespace: `kubectl delete -f namespace.yaml`;
+    Delete the namespace: `kubectl delete -f namespace.yaml`;
 
 ## Components
  - **Namespace**: Required to isolate `httpbin` resources;

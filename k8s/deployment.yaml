@@ -21,6 +21,10 @@ spec:
         app: httpbin
     spec:
       securityContext:
+        runAsNonRoot: true 
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
        #  runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
@@ -44,6 +48,10 @@ spec:
             drop:
             - ALL
           readOnlyRootFilesystem: false  # Set to false for httpbin to work properly
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          privileged: false
         livenessProbe:
           httpGet:
             path: /get
